@@ -64,7 +64,8 @@ Each service has its own **Deployment** and **Service** YAML definition.
 
 External access is provided through a `productpage` service, which exposes a public IP.
 
-Reference YAML files are located under the `platform/kube/` directory.
+Reference YAML files are located under platform/kube/.
+
 ---
 ## ⚠️ Disclaimer
 
