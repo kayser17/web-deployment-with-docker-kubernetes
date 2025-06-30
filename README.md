@@ -34,7 +34,7 @@ Example command:
 
 ```bash
 docker run --name product-page-gXX -p 5060:5060 -e GROUP_NUM=XX -d product-page/gXX
-
+---
 ### 3. 🧩 Microservices Deployment with Docker Compose
 
 The application is split into multiple microservices:
