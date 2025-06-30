@@ -1,0 +1,53 @@
+version: "3.8"
+
+services:
+  productpage:
+    build:
+      context: ../../src/productpage
+    container_name: productpage-29
+    ports:
+      - "9080:9080"
+    environment:
+      - SERVICE_VERSION=v1
+      - GROUP_NUM=29
+      - DETAILS_HOSTNAME=details
+      - RATINGS_HOSTNAME=ratings
+      - REVIEWS_HOSTNAME=reviews
+    depends_on:
+      - details
+      - reviews
+      - ratings
+
+  details:
+    build:
+      context: ../../src/details
+    container_name: details-29
+    ports:
+      - "9081:9080"
+    environment:
+      - SERVICE_VERSION=v1
+      - ENABLE_EXTERNAL_BOOK_SERVICE=true
+
+  reviews:
+    build:
+      context: ../../src/reviews/reviews-wlpcfg
+      args:
+        service_version: v1
+    container_name: reviews-29
+    ports:
+      - "9082:9080"
+    environment:
+      - SERVICE_VERSION=v1
+      - ENABLE_RATINGS=true
+      - RATINGS_HOSTNAME=ratings
+    depends_on:
+      - ratings
+
+  ratings:
+    build:
+      context: ../../src/ratings
+    container_name: ratings-29
+    ports:
+      - "9083:9080"
+    environment:
+      - SERVICE_VERSION=v1

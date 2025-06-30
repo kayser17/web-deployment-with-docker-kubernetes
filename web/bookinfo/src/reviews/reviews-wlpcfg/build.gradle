@@ -1,0 +1,21 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+apply plugin: 'eclipse'
+
+task copyApplication(type: Copy) {
+    dependsOn ':reviews-application:war' // Asegura que la tarea `war` se ejecute primero
+    from project(':reviews-application').tasks.named('war').get().archivePath
+    into 'servers/LibertyProjectServer/apps/'
+}
+
+task build(dependsOn: ['copyApplication']) {
+}
+
+task clean {
+    delete "servers/LibertyProjectServer/apps"
+}
+
