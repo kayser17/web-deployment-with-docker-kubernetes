@@ -34,7 +34,7 @@ Example command:
 
 ```bash
 docker run --name product-page-gXX -p 5060:5060 -e GROUP_NUM=XX -d product-page/gXX
----
+```
 ### 3. 🧩 Microservices Deployment with Docker Compose
 
 The application is split into multiple microservices:
@@ -51,8 +51,6 @@ Each service has its own `Dockerfile`.
 - Only one version of the `reviews` service can be active at a time.
 - Environment variables and container names follow consistent naming conventions.
 
----
-
 ### 4. ☸️ Microservices Deployment with Kubernetes
 
 A Kubernetes cluster is created in GKE with **3 nodes** (no autoscaling).
@@ -67,6 +65,7 @@ Each service has its own **Deployment** and **Service** YAML definition.
 External access is provided through a `productpage` service, which exposes a public IP.
 
 Reference YAML files are located under the `platform/kube/` directory.
+---
 ## ⚠️ Disclaimer
 
 This repository was created for academic purposes. Some configurations, scripts, and images were adapted from official course material provided during the course.
